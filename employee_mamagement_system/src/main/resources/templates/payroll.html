@@ -1,0 +1,248 @@
+<!doctype html>
+
+<html lang="en" xmlns="https://www.thymeleaf.org/" th:replace="base::layout(~{::section})">
+
+<section>
+    <div class="container text-center" style="background: azure;height: 580px;">
+        <h1 class="text-uppercase text-muted">All Employee Pay Calculator</h1>
+        <form th:action="@{/pay/}" th:object="${payroll}" method="post">
+            <div class="row">
+
+                <div class="col-md-6">
+
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="empid">Employee Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="hidden" class="form-control" th:value="${employee.empId}" name="empId" placeholder="Employee Id">
+                                <input type="text" class="form-control" th:value="${employee.empId}" disabled placeholder="Employee Id">
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="name">Employee name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="name" th:value="${employee.name}" disabled class="form-control" placeholder="enter name here" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group">
+                        <div class="row text-center">
+                            <div class="text-center col-md-6">
+                                <label for="month">Paying month</label>
+                            </div>
+                            <div class=" text-center col-md-6 mt-2">
+                                <select name="month" class="form-control" required>
+									<option value="">--Select--</option>
+									<option value="1">jan</option>
+									<option value="2">feb</option>
+									<option value="3">mar</option>
+									<option value="4">apr</option>
+									<option value="5">may</option>
+									<option value="6">jun</option>
+									<option value="7">july</option>
+									<option value="8">aug</option>
+									<option value="9">sep</option>
+									<option value="10">oct</option>
+									<option value="11">nov</option>
+									<option value="12">dec</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="basic pay">basic pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="salary" th:value="${employee.salary}" disabled class="form-control" placeholder="enter basic salary here" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="da">D.A.</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" th:value="(${employee.salary}*0.07)" class="form-control" placeholder="enter D.A. here" name="da" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Gross pay">Gross pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" th:value="${employee.salary}*0.07+${employee.salary}" class="form-control" placeholder="enter Gross Pay here" name="gp" required />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <div class="col-md-6">
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="department">Department</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" th:value="${employee.department}" disabled class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <label for="designation"> designation</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" th:value="${employee.role}" disabled class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row ">
+                            <div class="text-center col-md-6">
+                                <label for="Year">Paying Year</label>
+                            </div>
+                            <div class=" text-center col-md-6 mt-2">
+                                <select name="Year" class="form-control" required>
+									<option value="">-Select-</option>
+									<option value="2020">2020</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+									<option value="2024">2024</option>
+									<option value="2025">2025</option>
+									<option value="2026">2026</option>
+									<option value="2027">2027</option>
+									<option value="2028">2028</option>
+									<option value="2029">2029</option>
+									<option value="2030">2030</option>
+									<option value="2031">2031</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="PF">Less P.F.</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" th:value="(${employee.salary}*0.07+${employee.salary})*0.9" class="form-control" placeholder="enter pf here" name="pf" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Other">Less Other Pay (if any)</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="enter Other Pay here" name="O_Pay" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Net pay">Net pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" th:value="(${employee.salary}*0.07+${employee.salary})*0.9" placeholder="Net Pay" name="netpay" required />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="container text-center">
+                <button type="submit" class="btn btn-success mt-6 mt-12 " id="loginsubmit">Calculate
+					Salary</button>
+
+            </div>
+
+            <div class="container text-center">
+                <button type="submit" class="btn btn-success mt-2" id="loginsubmit">Add
+					Salary</button>
+                <button type="reset" class="btn btn-warning mt-2" id="loginsubmit">Reset</button>
+                <a th:href="@{/employee/list-emp}" class="btn btn-danger mt-2" data-dismiss="modal">Close</a>
+            </div>
+        </form>
+
+    </div>
+
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            var bla = $('#txt_name').val();
+            console.log("m: " + bla);
+            if (bla == undefined || bla == null || bla == '') {
+
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'You have successfully Added Employee !!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                }).then((res) => {
+                    window.location = "/list-emp";
+                })
+            }
+
+
+        });
+
+
+
+        function addAlert() {
+
+        }
+    </script>
+</section>

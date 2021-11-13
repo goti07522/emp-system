@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns="https://www.thymeleaf.org/" th:replace="base::layout(~{::section})">
+
+<section>
+    <div class="container text-center" style="background: azure;height: 580px;">
+        <h1 class="text-uppercase text-muted">All Employee Report</h1>
+        <hr>
+        <div class="container mt-3">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Deparment</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="emp: ${listemp}">
+                        <th scope="col" th:text="${emp.empId}"></th>
+                        <td th:text="${emp.name}"></td>
+                        <td th:text="${emp.department}"></td>
+                        <td th:text="${emp.role}"></td>
+                        <td>
+                            <a th:href='@{/view-emp/} + ${emp.empId}' class="btn btn-primary btn-sm">View</button>
+                            <a th:href='@{/edit-emp/} + ${emp.empId}' class="btn btn-success ml-2 btn-sm">Edit</button>
+                            <a th:href='@{/employee/delete-emp/} + ${emp.empId}' class="btn btn-danger ml-2 btn-sm">Delete</button>
+                        	<a th:href='@{/pay/payroll/} + ${emp.empId}' class="btn btn-danger ml-2 btn-sm">Payroll</button>
+                       
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</section>

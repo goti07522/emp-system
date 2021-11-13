@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" xmlns="https://www.thymeleaf.org/"
+	th:replace="base::layout(~{::section})">
+
+<section>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/employee.png}"
+								alt="User Image" style="max-width: 65px;">
+						</div>
+						<h4 th:text="${userCount}"></h4>
+						<h4 class="text-uppercase text-muted">Employee</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/department.png}"
+								alt="User Image" style="max-width: 65px;">
+						</div>
+						<h4 th:text="${deptCount}"></h4>
+						<h4 class="text-uppercase text-muted">Total Departments</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card" data-toggle="modal"
+					data-target="#add-product-model">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/payroll.png}"
+								alt="User Image" style="max-width: 65px;">
+						</div>
+						<h4></h4><br>
+						<h4 class="text-uppercase text-muted">Total Payroll</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mt-2">
+			<div class="col-md-6">
+				<div class="card" data-toggle="modal"
+					data-target="#add-department-model">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/department.png}"
+								alt="User Image" style="max-width: 65px;">
+
+						</div>
+						<h4 class="text-uppercase text-muted">Add Department</h4>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+				<div class="card" data-toggle="modal"
+					data-target="#add-product-modal">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/office.png}"
+								alt="User Image" style="max-width: 65px;">
+						</div>
+						<h4 class="text-uppercase text-muted">Add Designation</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-md-6 offset-md-3">
+			<a th:href="@{/add-emp}" style="text-decoration: none;">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="container ">
+							<img class="img-fluid" th:src="@{/images/add-emp.png}"
+								alt="User Image" style="max-width: 105px;">
+						</div>
+						<h4 class="text-uppercase text-muted">Add Employee</h4>
+					</div>
+				</div>
+			</a>
+
+		</div>
+
+	</div>
+
+	<!--add deparmet model start-->
+	<div class="modal fade" id="add-department-model" tabindex="-1"
+		role="dialog" aria-labelledby="add-category-model" aria-hidden="true">
+		<div class="modal-dialog " role="document">
+			<div class="modal-content">
+
+				<div class="modal-header primary-bg text-white ">
+					<h5 class="modal-title" id="loginModal">Add Deprtment !!</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form th:action="@{/department/}" th:method='post'>
+						<div class="form-group">
+							<label for="deptName">Department Name</label> <input type="text"
+								class="form-control" id="deptName"
+								placeholder="enter department name" name="deptName" required />
+						</div>
+						<div class="form-group">
+							<label for="description">Department Description</label>
+							<textarea style="min-height: 150px" class="form-control"
+								id="description" placeholder="enter description"
+								name="description" required></textarea>
+						</div>
+
+						<div class="container text-center">
+							<button type="submit"
+								class="btn btn-outline-success 
+                                mt-2"
+								id="loginsubmit">Add Department</button>
+							<button type="button"
+								class="btn btn-outline-success
+                                 mt-2"
+								data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!--end categorty model-->
+
+	<!--start add designation model start-->
+
+	<div class="modal fade" id="add-product-modal" tabindex="-1"
+		role="dialog" aria-labelledby="add-product-modal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header primary-bg text-white">
+					<h5 class="modal-title" id="exampleModalLabel">Add Designation
+						!!</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/desgination/}" th:method='post'>
+						<div class="form-group">
+							<label for="title">Designation Name</label> <input type="text"
+								class="form-control" id="title"
+								placeholder="enter designation name" name="title" required />
+						</div>
+						<div class="form-group">
+							<label for="detail">Designationes Description</label>
+							<textarea style="min-height: 150px" class="form-control"
+								id="detail" placeholder="detail" name="detail" required></textarea>
+						</div>
+
+						<div class="container text-center">
+							<button type="submit"
+								class="btn btn-outline-success 
+                                mt-2"
+								id="loginsubmit">Add Designation</button>
+							<button type="button"
+								class="btn btn-outline-success
+                                 mt-2"
+								data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--end  model start-->
+
+</section>

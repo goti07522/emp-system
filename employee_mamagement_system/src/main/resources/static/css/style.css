@@ -1,0 +1,20 @@
+.primary-bg {
+	background-color: #880e4f !important;
+	color: white;
+}
+
+.custom-style {
+	height: 27px;
+	max-width: 127px;
+}
+
+body {
+	background: url("../images/office-management-system.jpg");
+	background-size: cover;
+}
+
+.custom-chng {
+	max-width: 362px;
+	margin: auto;
+	margin-top: 73px;
+}

@@ -1,0 +1,235 @@
+<!doctype html>
+
+<html lang="en" xmlns="https://www.thymeleaf.org/" th:replace="base::layout(~{::section})">
+
+<section>
+    <div class="container text-center" style="margin-top: 70px">
+        <div class="container text-center" style="background: azure;height: 580px;">
+            <h1 class="text-uppercase text-muted">Add Emloyee</h1>
+
+            <form th:action="@{/employee/}" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Employee Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="enter name here" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Password</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="password" placeholder="enter password here" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="gender">Gender</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            Male: <input type="radio" name="gender" value="male" required/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            Female: <input type="radio" name="gender" value="female" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="dob">Date Of Birth</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" name="dob" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="doj">Date Of Joining</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" name="doj" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Phone Number</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" name="phone" class="form-control" placeholder="mobile number here" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Email address</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <input type="email" name="email" class="form-control" placeholder="email here" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="qualification">Select Qualification</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="qualification" class="form-control" required>
+									<option value="">--Select--</option>
+									<option value="UG">UG</option>
+									<option value="MCA">MCA</option>
+									<option value="BTECH">BTECH</option>
+								</select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Experience</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="enter experience in year" name="experience">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="empid">Salary</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="enter basic salary here" name="salary" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="department">Select Department</label>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <select name="department" class="form-control" required>
+									<option value="">--Select--</option>
+									<option th:each="dept: ${departments}"
+										th:value="${dept.deptId}"><span
+											th:text="${dept.deptName}"></span>
+									</option>
+								</select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="designation">Job Role</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="role" class="form-control" required>
+									<option value="">--Select--</option>
+									<option th:each="role: ${roles}" th:value="${role.roleId}">
+										<span th:text="${role.title}"></span>
+									</option>
+								</select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <textarea style="min-height: 150px" class="form-control" placeholder="enter address here" name="address" required></textarea>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="container text-center">
+                    <button type="submit" class="btn btn-success mt-2" id="loginsubmit">Add
+					Employee</button>
+                    <button type="reset" class="btn btn-warning mt-2" id="loginsubmit">Reset</button>
+                    <a th:href="@{/admin}" class="btn btn-danger mt-2" data-dismiss="modal">Close</a>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            var bla = $('#txt_name').val();
+            console.log("m: " + bla);
+            if (bla == undefined || bla == null || bla == '') {
+
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'You have successfully Added Employee !!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                }).then((res) => {
+                    window.location = "/list-emp";
+                })
+            }
+
+
+        });
+
+
+
+        function addAlert() {
+
+        }
+    </script>
+</section>
