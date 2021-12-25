@@ -29,6 +29,10 @@ public class EmployeeService {
     public Employee getEmpById(Long id) {
     	return this.employeeRepository.findById(id).get();
     }
+
+    public Employee getEmployeeByEmail(String email) {
+    	return this.employeeRepository.findByEmail(email);
+    }
     
     public void deleteEmp(Long id) {
     	Employee emp = new Employee();

@@ -31,7 +31,7 @@
                                 <label for="name">Employee name</label>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="name" th:value="${employee.name}" disabled class="form-control" placeholder="enter name here" required />
+                                <input disabled type="text" name="name" th:value="${employee.name}" class="form-control" placeholder="enter name here" required />
                             </div>
                         </div>
                     </div>
@@ -44,18 +44,18 @@
                             <div class=" text-center col-md-6 mt-2">
                                 <select name="month" class="form-control" required>
 									<option value="">--Select--</option>
-									<option value="1">jan</option>
-									<option value="2">feb</option>
-									<option value="3">mar</option>
-									<option value="4">apr</option>
-									<option value="5">may</option>
-									<option value="6">jun</option>
-									<option value="7">july</option>
-									<option value="8">aug</option>
-									<option value="9">sep</option>
-									<option value="10">oct</option>
-									<option value="11">nov</option>
-									<option value="12">dec</option>
+									<option value="jan">jan</option>
+<option value="feb">feb</option>
+<option value="mar">mar</option>
+<option value="apr">apr</option>
+<option value="may">may</option>
+<option value="jun">jun</option>
+<option value="july">july</option>
+<option value="aug">aug</option>
+<option value="sep">sep</option>
+<option value="oct">oct</option>
+<option value="nov">nov</option>
+<option value="dec">dec</option>
 								</select>
                             </div>
                         </div>
@@ -201,11 +201,7 @@
                 </div>
             </div>
 
-            <div class="container text-center">
-                <button type="submit" class="btn btn-success mt-6 mt-12 " id="loginsubmit">Calculate
-					Salary</button>
 
-            </div>
 
             <div class="container text-center">
                 <button type="submit" class="btn btn-success mt-2" id="loginsubmit">Add

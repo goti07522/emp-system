@@ -18,9 +18,10 @@ public class DesignationController {
     private DesginationService desginationService;
 
     @PostMapping(value = "/")
-    @ResponseBody
+    // @ResponseBody
     public String addDesgination(@ModelAttribute("designation") Designation designation) {
         this.desginationService.addDesgination(designation);
-        return "Successfully added Desgination !!";
+        // return "Successfully added Desgination !!";
+        return "admin_userdashboard";
     }
 }

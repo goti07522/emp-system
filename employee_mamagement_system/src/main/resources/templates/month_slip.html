@@ -1,0 +1,202 @@
+<!doctype html>
+
+<html lang="en" xmlns="https://www.thymeleaf.org/" th:replace="base::layout(~{::section})">
+
+<section>
+    <div class="container text-center" style="background: azure;height: 580px;">
+        <h1 class="text-uppercase text-muted"> Your Pay Slip</h1>
+        <form>
+            <div class="row">
+
+                <div class="col-md-6">
+
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="empid">Employee Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" th:value="${employee.empId}" disabled placeholder="Employee Id">
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="name">Employee name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="name" th:value="${employee.name}" disabled class="form-control" placeholder="enter name here" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group">
+                        <div class="row text-center">
+                            <div class="text-center col-md-6">
+                                <label for="month">Paying month</label>
+                            </div>
+                            <div class=" text-center col-md-6 mt-2">
+                                <input type="text" th:value="${employee.month}" disabled class="form-control" placeholder="enter name here" required />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="basic pay">basic pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="salary" th:value="${employee.salary}" disabled class="form-control" placeholder="enter basic salary here" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="da">D.A.</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" disabled th:value="${employee.da}" class="form-control" placeholder="enter D.A. here" name="da" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Gross pay">Gross pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" disabled th:value="${employee.gp}" class="form-control" placeholder="enter Gross Pay here" name="gp" required />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="department">Department</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" th:value="${employee.department}" disabled class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <label for="designation"> designation</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" th:value="${employee.role}" disabled class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row ">
+                            <div class="text-center col-md-6">
+                                <label for="Year">Paying Year</label>
+                            </div>
+                            <div class=" text-center col-md-6 mt-2">
+                                <input type="text" th:value="${employee.year}" disabled class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="PF">Less P.F.</label>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <input type="text" disabled th:value="${employee.pf}" class="form-control" placeholder="enter pf here" name="pf" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Other">Less Other Pay (if any)</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" disabled th:value="${employee.O_Pay}" class="form-control" placeholder="enter Other Pay here" name="O_Pay" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <label for="Net pay">Net pay</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" disabled class="form-control" th:value="${employee.netpay}" placeholder="Net Pay" name="netpay" required />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="container text-center">
+                <button onclick="printDoc()" class="btn btn-success mt-2" id="loginsubmit">Download</button>
+            </div>
+        </form>
+
+    </div>
+
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            var bla = $('#txt_name').val();
+            console.log("m: " + bla);
+            if (bla == undefined || bla == null || bla == '') {
+
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'You have successfully Added Employee !!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                }).then((res) => {
+                    window.location = "/list-emp";
+                })
+            }
+
+
+        });
+
+
+
+        function printDoc() {
+            window.print();
+        }
+    </script>
+</section>

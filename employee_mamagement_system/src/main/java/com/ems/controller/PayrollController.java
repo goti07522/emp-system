@@ -50,13 +50,15 @@ public class PayrollController {
 	}
 
 	@PostMapping("/")
-	@ResponseBody
 	public String doPay(@ModelAttribute Payroll payroll) {
-		Payroll payroll1 = this.payrollRepository.findByEmpIdAndMonth(payroll.getEmpId(),payroll.getMonth());
-		System.out.println(payroll1);
-		// this.payrollRepository.save(payroll);
+		Employee empById = this.employeeService.getEmpById(payroll.getEmpId());
+		payroll.setDepartment(empById.getDepartment());
+		payroll.setName(empById.getName());
+		payroll.setRole(empById.getRole());
+		payroll.setSalary(empById.getSalary().toString());
+		this.payrollRepository.save(payroll);
 		this.payrollRepository.flush();
-		return "paid";
+		return "redirect:/list-payroll";
 	}
 
 }

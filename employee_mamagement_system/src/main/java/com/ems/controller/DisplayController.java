@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import com.ems.model.Department;
 import com.ems.model.Designation;
 import com.ems.model.Employee;
+import com.ems.model.Payroll;
 import com.ems.services.DepartmentService;
 import com.ems.services.DesginationService;
 import com.ems.services.EmployeeService;
+import com.ems.services.PayrollService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,14 +31,24 @@ public class DisplayController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	@Autowired
+	private PayrollService payrollService;
+
 	@GetMapping("/")
-	public String home() {
+	public String home(HttpSession session,Model model){
+		model.addAttribute("session", session);
 		return "home";
 	}
 
 	@GetMapping("/login")
 	public String login() {
 		return "login";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 	@GetMapping("/add-emp")
@@ -84,4 +96,13 @@ public class DisplayController {
 		return "admin_userdashboard";
 	}
 
+	@GetMapping("/list-payroll")
+	public String payroll(Model model) {
+		model.addAttribute("title","Payroll List");
+		List<Payroll> allPayrolls = this.payrollService.getAllPayrolls();
+		model.addAttribute("allPayroll", allPayrolls);
+		return "payroll_list";
+	}
+
+	
 }

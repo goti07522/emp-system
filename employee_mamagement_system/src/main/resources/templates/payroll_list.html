@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns="https://www.thymeleaf.org/" th:replace="base::layout(~{::section})">
+
+<section>
+    <div class="container text-center" style="background: azure;height: 580px;">
+        <h1 class="text-uppercase text-muted">All Employee Payroll Report</h1>
+        <hr>
+        <div class="container mt-3">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Pay ID</th>
+                        <th scope="col">Emp ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Net PAY</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="payroll: ${allPayroll}">
+                        <th scope="col" th:text="${payroll.payId}"></th>
+                        <th scope="col" th:text="${payroll.empId}"></th>
+                        <td th:text="${payroll.name}"></td>
+                        <td th:text="${payroll.month}"></td>
+                        <td th:text="${payroll.year}"></td>
+                        <td th:text="${payroll.netpay}"></td>
+                        <td>
+                            <a th:href="@{/employee/payroll/} + ${payroll.payId}" class="btn btn-success ml-2 btn-sm">View</button>
+                            
+                            <a th:href='@{/edit-emp/} + ${payroll.payId}' class="btn btn-success ml-2 btn-sm">Edit</button>
+                            <a th:href='@{/employee/delete-emp/} + ${payroll.payId}' class="btn btn-danger ml-2 btn-sm">Delete</button>
+                                
+                            
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                            </ul>
+                            </nav>
+        </div>
+
+    </div>
+
+
+</section>
